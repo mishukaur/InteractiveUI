@@ -14,6 +14,7 @@ struct ContentView: View {
     @State private var favoriteFood = ""
     @State private var textTitle = "What is your name and favorite food?"
     @State private var presentAlert = false
+    @State private var date = Date()
     var body: some View {
         VStack {
             Text(textTitle)
@@ -27,6 +28,11 @@ struct ContentView: View {
                 .multilineTextAlignment(.center)
                 .font(.title)
                 .border(Color.gray, width:1)
+            DatePicker(
+                    "Select date",
+                    selection: $date,
+                    displayedComponents: [.date]
+                )
             Button("Submit") {
                 textTitle = "Welcome, \(name)! \(favoriteFood) is delicious!"
                 presentAlert = true
